@@ -3,41 +3,55 @@ import re
 from datetime import datetime
 
 class UserManage(models.Manager):
-    def validatorReg(self,postData):
-        error={}
+    def validatorReg(self, postData):
+        errors = {}
         if postData['username']:
             if not postData['username'].isalpha():
-                error['user_name_alpha'] = 'User name must contain letters only'
+                errors['user_name_alpha'] = 'User name must contain letters only'
             if len(postData['username']) < 2:
-                error['len_user_name'] = 'User name should be longer than 2 letters'
+                errors['len_user_name'] = 'User name should be longer than 2 letters'
         else:
-            error['null_user_name'] = 'You have to enter a User name'
-
-        
+            errors['null_user_name'] = 'You have to enter a User name'
 
         if postData['email']:
             EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
             if not EMAIL_REGEX.match(postData['email']):               
-                error['email'] = "Invalid email address!"
+                errors['email'] = "Invalid email address!"
             elif User.objects.filter(email=postData['email']).exists():
-                error['email_unique'] = "This email is already registered"
+                errors['email_unique'] = "This email is already registered"
         else:
-            error['null_email'] = 'You have to enter an email'
+            errors['null_email'] = 'You have to enter an email'
         
         if postData['password']:
-            if len(postData['password']) <8 :
-                error['len_password'] = 'password should be longer than 6 letters'
-        else :
-            error['null_password'] = 'You have to enter an password'
+            if len(postData['password']) < 5:
+                errors['len_password'] = 'Password should be longer than 5 characters'
+        else:
+            errors['null_password'] = 'You have to enter a password'
         
         if postData['c_password']:
-            if len(postData['c_password']) <8 :
-                error['len_c_password'] = 'password should be longer than 6 letters'
-            elif(postData['c_password'] != postData['password']):
-                    error['c_password'] = 'Your 2 passwords so not match'
-        else :
-            error['null_c_password'] = 'You have to enter a confirmation password'
-        return error
+            if len(postData['c_password']) < 5:
+                errors['len_c_password'] = 'Password should be longer than 5 characters'
+            elif postData['c_password'] != postData['password']:
+                errors['c_password'] = 'Your two passwords do not match'
+        else:
+            errors['null_c_password'] = 'You have to enter a confirmation password'
+        return errors
+    
+    def validatorLog(self, postData):
+        errors = {}
+        if postData['log_email']:
+            EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+            if not EMAIL_REGEX.match(postData['log_email']):               
+                errors['email'] = "Invalid email address!"
+        else:
+            errors['null_email'] = 'You have to enter an email'
+        
+        if postData['log_password']:
+            if len(postData['log_password']) < 5:
+                errors['len_password'] = 'Password should be longer than 5 characters'
+        else:
+            errors['null_password'] = 'You have to enter a password'
+        return errors
     
     def vaildatorlog(self,postData):
         error={}
@@ -49,7 +63,7 @@ class UserManage(models.Manager):
             error['null_email'] = 'You have to enter an email'
         
         if postData['log_password']:
-            if len(postData['log_password']) <8 :
+            if len(postData['log_password']) <5 :
                 error['len_password'] = 'password should be longer than 6 letters'
         else :
             error['null_password'] = 'You have to enter an password'
@@ -63,6 +77,7 @@ class User(models.Model):
     password = models.CharField(max_length=45) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManage()
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -77,9 +92,7 @@ class Category(models.Model):
     
 class Desgin(models.Model):
     title = models.CharField(max_length=45)
-    description = models.TextField(max_length=255)
     image_url = models.TextField(max_length=225) 
-    artworkcol = models.CharField(max_length=45, null=True, blank=True)  
     user_uploaded = models.ForeignKey(User, related_name="designs_uploaded", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name="designs", on_delete=models.CASCADE)
     who_liked_it = models.ManyToManyField(User, related_name="liked_designs", blank=True)

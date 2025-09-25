@@ -29,11 +29,6 @@
   <div class="auth-box">
     <h2 class="text-center mb-3 text-paynes-gray">Create an account</h2>
 
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} py-2" role="alert">{{ message }}</div>
-      {% endfor %}
-    {% endif %}
 
     <form method="POST" action="{% url 'register' %}">
       {% csrf_token %}
@@ -45,7 +40,7 @@
 
       <div class="mb-3">
         <label for="email" class="form-label text-paynes-gray">Email</label>
-        <input id="email" name="email" type="email" class="form-control" required>
+        <input id="email" name="email" type="text" class="form-control" required>
       </div>
 
       <div class="mb-3">
@@ -65,6 +60,15 @@
       Already have an account? <a class="link-accent" href="{% url 'login' %}">Log in</a>.
     </p>
     <p class="text-center muted-note">If you don't have an account yet, please sign up to join the community.</p>
+  
+  <div>
+{% if messages %}
+  {% for message in messages %}
+    <p style="color:red;">{{ message }}</p>
+  {% endfor %}
+{% endif %}
   </div>
+</div>
+
 </body>
 </html>

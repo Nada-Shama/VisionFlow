@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ design.title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+
+  <!-- Design Image -->
+  <div class="text-center mb-4">
+    <img src="{{ design.image_url }}" alt="{{ design.title }}" class="img-fluid rounded">
+  </div>
+
+  <!-- Design Info -->
+  <h2>{{ design.title }}</h2>
+  <p>{{ design.description }}</p>
+
+  <!-- Likes -->
+  <div class="mb-3">
+    {% if likes_count > 0 %}
+      <strong>{{ liked_display|join:", " }}</strong>
+      {% if others_count > 0 %}
+        and {{ others_count }} others
+      {% endif %}
+      liked this.
+    {% else %}
+      No likes yet.
+    {% endif %}
+  </div>
+
+  <!-- Comment Box -->
+  <div class="mb-4">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-2">
+        <textarea name="comment_text" class="form-control" rows="2" placeholder="Add a comment..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Post Comment</button>
+    </form>
+  </div>
+
+  <!-- Comments -->
+  <h4>Comments ({{ comments.count }})</h4>
+  <div class="list-group">
+    {% for comment in comments %}
+      <div class="list-group-item">
+        <strong>{{ comment.user.username }}</strong>: {{ comment.text }}
+        <small class="text-muted d-block">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+      </div>
+    {% empty %}
+      <p class="text-muted">No comments yet.</p>
+    {% endfor %}
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
