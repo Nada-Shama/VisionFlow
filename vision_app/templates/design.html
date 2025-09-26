@@ -10,16 +10,17 @@
 <body>
 <div class="container mt-4">
 
-  <!-- Design Image -->
+
   <div class="text-center mb-4">
-    <img src="{{ design.image_url }}" alt="{{ design.title }}" class="img-fluid rounded">
+    <img src="{{ design.image.url }}" class="img-fluid">
+
   </div>
 
-  <!-- Design Info -->
+
   <h2>{{ design.title }}</h2>
   <p>{{ design.description }}</p>
 
-  <!-- Likes -->
+
   <div class="mb-3">
     {% if likes_count > 0 %}
       <strong>{{ liked_display|join:", " }}</strong>
@@ -32,7 +33,6 @@
     {% endif %}
   </div>
 
-  <!-- Comment Box -->
   <div class="mb-4">
     <form method="POST">
       {% csrf_token %}
@@ -43,7 +43,6 @@
     </form>
   </div>
 
-  <!-- Comments -->
   <h4>Comments ({{ comments.count }})</h4>
   <div class="list-group">
     {% for comment in comments %}

@@ -17,7 +17,7 @@ class UserManage(models.Manager):
             EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
             if not EMAIL_REGEX.match(postData['email']):               
                 errors['email'] = "Invalid email address!"
-            elif User.objects.filter(email=postData['email']).exists():
+            elif Users.objects.filter(email=postData['email']).exists():
                 errors['email_unique'] = "This email is already registered"
         else:
             errors['null_email'] = 'You have to enter an email'
@@ -70,9 +70,33 @@ class UserManage(models.Manager):
         return error  
 
 
+class designManage(models.Manager):
+    def validatordes(self, postData,filesData):
+        errors = {}
 
-class User(models.Model):
+        if postData.get('title'):
+            if len(postData['title']) < 2:
+                errors['len_title'] = 'Title should be longer than 2 letters'
+        else:
+            errors['null_title'] = 'You have to enter a title'
+
+        if 'image' not in filesData or not filesData['image']:
+            errors['image'] = "You must upload an image"
+        else:
+            valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
+            file_name = filesData['image'].name.lower()
+            if not any(file_name.endswith(ext) for ext in valid_extensions):
+                errors['image'] = "Image must be a valid format (jpg, png, gif, webp)"
+
+        if not postData.get('category'):
+            errors['category'] = "You must select a category"
+
+        return errors
+
+
+class Users(models.Model):
     username= models.CharField(max_length=45)
+    profilepic= models.URLField(max_length=225, null=True, blank=True)
     email = models.EmailField(max_length=225, unique=True)
     password = models.CharField(max_length=45) 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -80,7 +104,7 @@ class User(models.Model):
     objects = UserManage()
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.username} "
     
 class Category(models.Model):
     name = models.CharField(max_length=45)
@@ -92,19 +116,20 @@ class Category(models.Model):
     
 class Desgin(models.Model):
     title = models.CharField(max_length=45)
-    image_url = models.TextField(max_length=225) 
-    user_uploaded = models.ForeignKey(User, related_name="designs_uploaded", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="designs/",null=True) 
+    user_uploaded = models.ForeignKey(Users, related_name="designs_uploaded", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name="designs", on_delete=models.CASCADE)
-    who_liked_it = models.ManyToManyField(User, related_name="liked_designs", blank=True)
+    who_liked_it = models.ManyToManyField(Users, related_name="liked_designs", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects=designManage()
 
     def __str__(self):
         return self.title
     
 class Comment(models.Model):
     text = models.TextField(max_length=225)
-    user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, related_name="comments", on_delete=models.CASCADE)
     design = models.ForeignKey(Desgin, related_name="comments", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
