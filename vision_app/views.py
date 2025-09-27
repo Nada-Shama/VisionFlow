@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from .models import Users,Category,Comment,Desgin
@@ -62,20 +62,27 @@ def logout(request):
     request.session.flush()
     return redirect("/")
 
+#/////////////////////////////////////////////////////////////////
+def profile(request, user_id):
 
-def profile_data(request):
     if "user_id" not in request.session:
         return redirect('login')
-
-    user = Users.objects.get(id=request.session["user_id"])
-    designs = user.designs_uploaded.all()
-
+    profile_user = get_object_or_404(Users, id=user_id)
+    
     context = {
-        "user": user,
-        "designs": designs
+        "user": profile_user,
+        "user_id": user_id
     }
     return render(request, "profile.html", context)
 
+def edit_profile(request, user_id):
+
+    return render(request, "edit_profile.html")
+
+
+def add_design(request, user_id):
+    return render(request, "add_design.html")
+#//////////////////////////////////////////////////////////////////////////////////
 
 
 def design(request,num):
@@ -151,3 +158,13 @@ def upload(request):
         })
 
     return JsonResponse({'error': 'Invalid request'}, status=405)
+
+
+#///////////////////////////////////////////////////////////////
+def category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    designs = Desgin.objects.filter(category=category)
+    return render(request, 'category.html', {
+        'category': category,
+        'designs': designs
+    })

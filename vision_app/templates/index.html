@@ -1,49 +1,118 @@
- {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
- 
 <head>
-      <link href="{%  static 'css/features.css'%}" rel="stylesheet" >
+  <link href="{%  static 'css/features.css'%}" rel="stylesheet" >
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-      <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/features/">
-      <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
-      
 
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+
+  <title>Main Page</title>
+<style>
+  :root {
+    --primary-color: #00657eff;   /* teal/navy */
+    --secondary-color: #c5dcdeff; /* soft aqua */
+    --light-color: #EEEEEE;     /* light gray */
+    --accent-color: #897886ff;    /* pink */
+  }
+
+  body {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+  }
+
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+
+  /* Navbar in pink */
+  .navbar {
+    background-color: var(--accent-color) !important;
+  }
+  .navbar-brand, .nav-link {
+    color: var(--light-color) !important;
+  }
+  .nav-link:hover {
+    color: var(--secondary-color) !important;
+  }
+
+  /* Welcome section in teal */
+  .welcome-section {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 3rem 1rem;
+    border-radius: 8px;
+  }
+
+  /* Alternating section background */
+  .featurette:nth-of-type(even) {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  hr.featurette-divider {
+    border-top: 2px solid var(--accent-color);
+    margin: 3rem 0;
+  }
+
+  /* Buttons pink + teal hover */
+  .btn-outline-success {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+  .btn-outline-success:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+  }
+
+  /* Cards get subtle teal border */
+  .card {
+    border: 2px solid var(--secondary-color);
+  }
+  .card-title {
+    color: var(--primary-color);
+  }
+  .card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    transition: 0.3s ease;
+  }
+  .category-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.category-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(60, 101, 110, 0.8);
+  color: var(--light-color);
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+</style>
 
 
-    
-
-  <title>Document</title>
-
-  <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+<body>
     
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -75,6 +144,7 @@
 
 <main>
 
+  <!-- Carousel -->
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -126,11 +196,18 @@
     </button>
   </div>
 
+  <!-- Welcome Section -->
+  <div class="container welcome-section my-5">
+    <h2>Welcome to VisionFlow</h2>
+    <p>
+      This is a short welcoming paragraph. You can introduce the platform here
+      and encourage users to explore the categories below.
+    </p>
+  </div>
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <hr class="featurette-divider">
 
+  <!-- Marketing messaging and featurettes -->
   <div class="container marketing">
 
     <!-- Three columns of text below the carousel -->
@@ -158,84 +235,36 @@
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
+    <hr class="featurette-divider">
 
-
-
-      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <!-- Cards Section -->
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       <div class="col">
         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
             <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Earth</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>3d</small>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-
       <div class="col">
         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
             <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>Pakistan</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>4d</small>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-
       <div class="col">
         <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
           <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
             <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-            <ul class="d-flex list-unstyled mt-auto">
-              <li class="me-auto">
-                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-              </li>
-              <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-                <small>California</small>
-              </li>
-              <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-                <small>5d</small>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </div>
 
-
-
-
-
-
-
-    <!-- START THE FEATURETTES -->
-
     <hr class="featurette-divider">
 
+    <!-- Featurettes -->
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
@@ -243,7 +272,6 @@
       </div>
       <div class="col-md-5">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
       </div>
     </div>
 
@@ -256,7 +284,6 @@
       </div>
       <div class="col-md-5 order-md-1">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
       </div>
     </div>
 
@@ -265,32 +292,23 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+        <p class="lead">And yes, this is the last block of representative placeholder content.</p>
       </div>
       <div class="col-md-5">
         <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
       </div>
     </div>
 
     <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
   </div><!-- /.container -->
 
-
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="container">
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 </main>
 
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-
-  
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
