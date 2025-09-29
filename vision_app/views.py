@@ -3,10 +3,15 @@ from django.http import JsonResponse
 from django.contrib import messages
 from .models import Users,Category,Comment,Desgin
 import bcrypt
+from django.templatetags.static import static
 
 
 def index(request):
     return render(request,'index.html')
+
+def about(request):
+    return render(request,'about.html')
+
 
 
 def register(request):
@@ -60,7 +65,7 @@ def login(request):
 
 def logout(request):
     request.session.flush()
-    return redirect("/")
+    return redirect("login")
 
 #/////////////////////////////////////////////////////////////////
 def profile(request, user_id):
@@ -75,93 +80,162 @@ def profile(request, user_id):
     }
     return render(request, "profile.html", context)
 
-def edit_profile(request, user_id):
 
-    return render(request, "edit_profile.html")
+
+
+def edit_profile(request, user_id):
+    if "user_id" not in request.session:
+        return redirect("login")
+
+    user = get_object_or_404(Users, id=user_id)
+
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        profile_picture = request.FILES.get("profile_picture")
+
+        if username:
+            user.username = username
+        if email:
+            user.email = email
+        if profile_picture:
+            user.profilepic = profile_picture
+
+        user.save()
+        return redirect("profile", user_id=user.id)
+
+    return render(request, "edit_profile.html", {"user": user})
+
 
 
 def add_design(request, user_id):
-    return render(request, "add_design.html")
+    if "user_id" not in request.session:
+        return redirect("login")
+
+    user = get_object_or_404(Users, id=user_id)   # safer than .get()
+    categories = Category.objects.all() 
+
+    if request.method == "POST":
+        errors = Desgin.objects.validatordes(request.POST, request.FILES)
+        if errors:
+            return render(request, "add_design.html", {
+                "categories": categories,
+                "errors": errors,
+                "profile_user": user   # <-- add this
+            })
+
+        title = request.POST.get("title")
+        image = request.FILES.get("image")
+        category_id = request.POST.get("category")
+        category = Category.objects.get(id=category_id)
+
+        Desgin.objects.create(
+            title=title,
+            image=image,
+            category=category,
+            user_uploaded=user
+        )
+        return redirect("profile", user_id=user.id)
+
+    return render(request, "add_design.html", {
+        "categories": categories,
+        "profile_user": user  # <-- add this
+    })
+
+
+
 #//////////////////////////////////////////////////////////////////////////////////
 
 
-def design(request,num):
-    design = Desgin.objects.get(id=num)
-    comments=Comment.objects.all().order_by('-created_at')
-    
-    if request.method=='POST':
-        text = request.POST.get('text')
-        if request.session.get("Usersid"):
-            Users = Users.objects.get(id=request.session['Usersid'])
-            Comment.objects.create(text=text, Users=Users, design=design)
-            return redirect('design_detail', design_id=num)
-        
+def design(request, num):
+
+    design = get_object_or_404(Desgin, id=num)
+    comments = Comment.objects.filter(design=design).order_by('-created_at')
+
     likes_count = design.who_liked_it.count()
-    liked_Userss = design.who_liked_it.all()
+    liked_users = design.who_liked_it.all()
     liked_display = []
     if likes_count > 0:
-        liked_display = [u.Usersname for u in liked_Userss[:2]]  
+        liked_display = [u.username for u in liked_users[:2]]
         others_count = likes_count - 2
     else:
         others_count = 0
-    context = {        "design": design,
+
+    context = {
+        "design": design,
         "comments": comments,
         "likes_count": likes_count,
         "liked_display": liked_display,
-        "others_count": others_count}
-    return render(request,'design.html',context)
+        "others_count": others_count
+    }
+    return render(request, 'design.html', context)
+
+
+def add_comment(request, design_id):
+    if request.method == "POST":
+        if not request.session.get("user_id"):
+            return JsonResponse({"error": "You must be logged in to comment."}, status=403)
+
+        text = request.POST.get("comment_text")
+        if not text:
+            return JsonResponse({"error": "Comment cannot be empty."}, status=400)
+
+        user = get_object_or_404(Users, id=request.session["user_id"])
+        design = get_object_or_404(Desgin, id=design_id)
+
+        comment = Comment.objects.create(
+            text=text,
+            user=user,
+            design=design
+        )
+
+        profilepic_url = user.profilepic.url if user.profilepic else static('img/default.png')
+
+        return JsonResponse({
+            "username": user.username,
+            "text": comment.text,
+            "created_at": comment.created_at.strftime("%b %d, %Y %H:%M"),
+            "profilepic": profilepic_url
+        })
+    return JsonResponse({"error": "Invalid request."}, status=400)
+
+
 
 def new(request):
     if 'userid' not in request.session:
-        return redirect('/')   
+        return redirect('login')   
     
     categories = Category.objects.all()
     return render(request, 'upload.html', {'categories': categories})
 
 
 
+def like_design(request, design_id):
+    if "user_id" not in request.session:
+        return JsonResponse({"error": "You must be logged in to like a design."}, status=403)
 
-def upload(request):
-    if 'userid' not in request.session:
-        return JsonResponse({'error': 'Unauthorized'}, status=401)
+    if request.method != "POST":
+        return JsonResponse({"error": "Invalid request method."}, status=400)
 
-    if request.method == 'POST':
-        errors = Desgin.objects.validatordes(request.POST, request.FILES)
-        if errors:
-            return JsonResponse({'errors': errors}, status=400)
+    design = get_object_or_404(Desgin, id=design_id)
+    user = get_object_or_404(Users, id=request.session["user_id"])
 
-        try:
-            user = Users.objects.get(id=request.session['userid'])
-        except Users.DoesNotExist:
-            return JsonResponse({'error': 'User not found'}, status=404)
+    if user in design.who_liked_it.all():
+        design.who_liked_it.remove(user)
+        liked = False
+    else:
+        design.who_liked_it.add(user)
+        liked = True
 
-        title = request.POST['title']
-        category_id = request.POST['category']
-        image = request.FILES.get('image')
-
-        try:
-            category = Category.objects.get(id=category_id)
-        except Category.DoesNotExist:
-            return JsonResponse({'error': 'Invalid category'}, status=400)
-
-        design = Desgin.objects.create(
-            title=title,
-            image=image,
-            user_uploaded=user,
-            category=category
-        )
-
-        return JsonResponse({
-            'message': 'Design uploaded successfully',
-            'design_id': design.id,
-            'image_url': design.image.url if design.image else None
-        })
-
-    return JsonResponse({'error': 'Invalid request'}, status=405)
+    return JsonResponse({
+        "liked": liked,
+        "likes_count": design.who_liked_it.count()
+    })
 
 
 #///////////////////////////////////////////////////////////////
 def category(request, category_id):
+
     category = get_object_or_404(Category, id=category_id)
     designs = Desgin.objects.filter(category=category)
     return render(request, 'category.html', {

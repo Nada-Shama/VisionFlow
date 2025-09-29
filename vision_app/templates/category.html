@@ -14,18 +14,9 @@
     }
 
     body {
+      padding-top: 50px;
       background-color: var(--light-color);
       color: var(--primary-color);
-    }
-
-    .navbar {
-      background-color: var(--accent-color) !important;
-    }
-    .navbar-brand, .nav-link {
-      color: var(--light-color) !important;
-    }
-    .nav-link:hover {
-      color: var(--secondary-color) !important;
     }
 
     .category-header {
@@ -49,28 +40,52 @@
 
     .card {
       transition: transform 0.3s ease;
+      border: none;
+      background-color: var(--light-color);
+      cursor: pointer;
+      
+
     }
+
     .card:hover {
       transform: translateY(-5px);
+    }
+
+    .card img {
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .design-info {
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent-color);
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">VisionFlow</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="/profile/">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="/about/">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="/design/add/">Add Design</a></li>
-          <li class="nav-item"><a class="nav-link" href="/#categories">Categories</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+{% include "header.html" %}
+<main>
+  <div class="container">
   <div class="category-header">
     <h1>{{ category.name }}</h1>
     {% if category.description %}
@@ -79,16 +94,23 @@
     <hr>
   </div>
 
-  <div class="container">
+
     <div class="row">
       {% for design in designs %}
         <div class="col-md-4 mb-4">
           <a href="{% url 'design' design.id %}" class="text-decoration-none">
-            <div class="card h-100">
+            <div class="card h-100 card-design" style='box-shadow: inset 0 0 25px rgba(0,0,0,0.25),  0 0 25px rgba(0,0,0,0.15);'>
               <img src="{{ design.image.url }}" class="card-img-top" alt="{{ design.title }}">
-              <div class="card-body">
+              <div class="card-body text-center">
                 <h5 class="card-title">{{ design.title }}</h5>
-                <p class="card-text">By {{ design.user.username }}</p>
+                <div class="design-info">
+                  <span>{{ design.user_uploaded.username }}</span>
+                  <span>{{ design.created_at|date:"M d, Y" }}</span>
+                </div>
+                <div class="design-info mt-2">
+                  <span style='color:red; font-size:15px'>{{ design.who_liked_it.count }} likes</span>
+                  <span style='color:red; font-size:15px'>{{ design.comments.count }} comments</span>
+                </div>
               </div>
             </div>
           </a>
@@ -98,7 +120,9 @@
       {% endfor %}
     </div>
   </div>
+</main>
+{% include "footer.html" %}
 
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

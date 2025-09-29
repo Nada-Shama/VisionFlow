@@ -2,60 +2,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ design.title }}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ design.title }}</title>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<style>
+:root {
+  --primary-color: #00657eff;
+  --secondary-color: #d3e3e5ff;
+  --light-color: #EEEEEE;
+  --accent-color: #9a8796ff;
+}
+
+body {
+  padding-top: 50px;
+  background-color: var(--secondary-color);
+  font-family: Arial, sans-serif;
+  color: var(--primary-color);
+  font-size:larger;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.design-card {
+  background: var(--light-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.design-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 10px solid var(--accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.design-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.meta-left, .meta-right {
+  flex: 1 1 300px;
+}
+
+.meta-left p, .meta-right p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.meta-left p {
+  color: var(--primary-color);
+}
+
+.meta-right p {
+  color: var(--primary-color);
+}
+
+.design-meta h4 {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.likes-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.comments-section {
+  background: var(--light-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.comment {
+  border-bottom: 1px solid #ddd;
+  padding: 0.8rem 0;
+}
+
+.comment strong {
+  color: var(--accent-color);
+  font-size:20px;
+}
+
+.comment small {
+  color: #777;
+  margin-left: 8px;
+}
+
+.btn-comment {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  transition: 0.3s;
+}
+
+.btn-comment:hover {
+  background-color: var(--primary-color);
+}
+</style>
 </head>
 <body>
-<div class="container mt-4">
+{% include "header.html" %}
+<main>
+<div class="container">
 
+  <div class="design-card">
+    <img src="{{ design.image.url }}" alt="{{ design.title }}" class="design-image">
 
-  <div class="text-center mb-4">
-    <img src="{{ design.image.url }}" class="img-fluid">
-
-  </div>
-
-
-  <h2>{{ design.title }}</h2>
-  <p>{{ design.description }}</p>
-
-
-  <div class="mb-3">
-    {% if likes_count > 0 %}
-      <strong>{{ liked_display|join:", " }}</strong>
-      {% if others_count > 0 %}
-        and {{ others_count }} others
-      {% endif %}
-      liked this.
-    {% else %}
-      No likes yet.
-    {% endif %}
-  </div>
-
-  <div class="mb-4">
-    <form method="POST">
-      {% csrf_token %}
-      <div class="mb-2">
-        <textarea name="comment_text" class="form-control" rows="2" placeholder="Add a comment..."></textarea>
+    <div class="design-meta">
+      <h4>{{ design.title }}</h4>
+      <div class="meta-left">
+        <p><strong>Posted by:</strong> {{ design.user_uploaded.username }}</p>
+        <p><small>On {{ design.created_at|date:"M d, Y" }}</small></p>
       </div>
-      <button type="submit" class="btn btn-primary">Post Comment</button>
-    </form>
+      <div class="meta-right">
+        <p><strong>Category:</strong> {{ design.category.name }}</p>
+      </div>
+    </div>
+
+    <!-- Likes section -->
+    <div class="likes-section">
+      <button id="likeBtn" class="btn {% if user in design.who_liked_it.all %}btn-danger{% else %}btn-outline-danger{% endif %}">
+        {% if user in design.who_liked_it.all %}Liked{% else %}Like{% endif %}
+      </button>
+      <span id="likesCount">{{ design.who_liked_it.count }}</span> likes
+    </div>
+
   </div>
 
-  <h4>Comments ({{ comments.count }})</h4>
-  <div class="list-group">
+  <!-- Comments Section -->
+  <div class="comments-section">
+<div class="comments-section">
+<h4 id="commentsCount" data-count="{{ comments.count }}">Comments ({{ comments.count }})</h4>
+
+  <div id="commentsList">
     {% for comment in comments %}
-      <div class="list-group-item">
-        <strong>{{ comment.user.username }}</strong>: {{ comment.text }}
-        <small class="text-muted d-block">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+      <div class="comment d-flex align-items-start mb-3">
+        {% if comment.user.profilepic %}
+          <img src="{{ comment.user.profilepic.url }}" 
+               alt="{{ comment.user.username }}" 
+               class="rounded-circle me-2"
+               style="width:40px; height:40px; object-fit:cover;">
+        {% else %}
+          <img src="{% static 'img/default.png' %}" 
+               alt="Default profile" 
+               class="rounded-circle me-2"
+               style="width:40px; height:40px; object-fit:cover;">
+        {% endif %}
+
+        <div>
+          <strong>{{ comment.user.username }}</strong>
+          <small>{{ comment.created_at|date:"M d, Y H:i" }}</small>
+          <p class="mb-0">{{ comment.text }}</p>
+        </div>
       </div>
     {% empty %}
       <p class="text-muted">No comments yet.</p>
     {% endfor %}
   </div>
+</div>
+
+
+    <form id="commentForm" method="POST" action="{% url 'add_comment' design.id %}" class="mt-3">
+      {% csrf_token %}
+      <div class="mb-2">
+        <textarea name="comment_text" class="form-control" rows="2" placeholder="Add a comment..."></textarea>
+      </div>
+      <button type="submit" class="btn-comment">Post Comment</button>
+    </form>
+  </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+
+{% include "footer.html" %}
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const commentForm = document.getElementById("commentForm");
+    if (commentForm) {
+        commentForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            fetch(this.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    let commentsDiv = document.getElementById("commentsList");
+                    commentsDiv.innerHTML += `
+                        <div class="comment d-flex align-items-start mb-3">
+                            <img src="${data.profilepic}" 
+                                 alt="${data.username}" 
+                                 class="rounded-circle me-2" 
+                                 style="width:40px; height:40px; object-fit:cover;">
+                            <div>
+                          <strong>${data.username}</strong>
+                          <small>${data.created_at}</small>
+                          <p>${data.text}</p>
+                        </div>
+                    `;
+                    this.reset();
+                    let commentsHeader = document.getElementById("commentsCount");
+                    if (commentsHeader) {
+                        let currentCount = parseInt(commentsHeader.dataset.count) || 0;
+                        currentCount += 1;
+                        commentsHeader.dataset.count = currentCount;
+                        commentsHeader.innerHTML = `Comments (${currentCount})`;
+                    }
+                }
+            });
+        });
+    }
+
+    const likeBtn = document.getElementById("likeBtn");
+    if (likeBtn) {
+        likeBtn.addEventListener("click", function() {
+            fetch("{% url 'like_design' design.id %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById("likesCount").innerText = data.likes_count;
+                    if (data.liked) {
+                        likeBtn.classList.remove("btn-outline-danger");
+                        likeBtn.classList.add("btn-danger");
+                        likeBtn.innerText = "Liked";
+                    } else {
+                        likeBtn.classList.remove("btn-danger");
+                        likeBtn.classList.add("btn-outline-danger");
+                        likeBtn.innerText = "Like";
+                    }
+                }
+            });
+        });
+    }
+});
+</script>
+
+
 </body>
 </html>

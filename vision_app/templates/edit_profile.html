@@ -1,11 +1,144 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #00657eff;   /* teal/navy */
+      --secondary-color: #c5dcdeff; /* soft aqua */
+      --light-color: #EEEEEE;       /* cream/light */
+      --accent-color: #897886ff;    /* pink */
+    }
+
+    body {
+      padding-top: 50px;
+      background-color: var(--light-color);
+      font-family: Arial, sans-serif;
+      color: var(--primary-color);
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 4rem auto;
+      background-color: var(--primary-color);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+    }
+
+    .form-label {
+      color: white;
+      font-weight: 500;
+    }
+
+    .form-control {
+      background-color: var(--secondary-color);
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem;
+    }
+
+    .btn-submit {
+      background-color: var(--accent-color);
+      border: none;
+      padding: 0.8rem;
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+      margin-top:10px;
+    }
+    .btn-submit:hover {
+      background-color: #6f6270;
+    }
+
+    .profile-pic {
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      max-width: 120px;
+      height: 120px;
+      object-fit: cover;
+    }
+
+
+.btn-back {
+    display: block; /* center by itself */
+    text-align: center;
+    margin: 1.5rem auto; /* space above and center horizontally */
+    padding: 0.4rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    font-weight: bold;
+    font-size: 0.9rem; /* smaller text */
+
+    border-radius: 8px;
+    text-decoration: none;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+ background-color: #6f6270;
+    color: var(--light-color);
+
+}
+
+
+  </style>
 </head>
 <body>
-    <h1>heeloo</h1>
+  {% include "header.html" %}
+  <main>
+  <div class="form-container">
+    <h2>Edit Profile</h2>
+    
+
+   <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="text-center">
+    {% if user.profilepic %}
+      <img src="{{ user.profilepic.url }}" class="rounded-circle mb-3 profile-pic" alt="Profile Picture">
+    {% else %}
+      <img src="{% static 'img/default.png' %}" class="rounded-circle mb-3 profile-pic" alt="Default Profile Picture">
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" name="username" id="username" class="form-control" value="{{ user.username }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" name="email" id="email" class="form-control" value="{{ user.email }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="profile_picture" class="form-label">Change Profile Picture</label>
+    <input type="file" name="profile_picture" id="profile_picture" class="form-control" accept="image/*">
+  </div>
+
+  <button type="submit" class="btn-submit">Save Changes</button>
+  <a href="{% url 'profile' user.id %}" class="btn-back">Back</a>
+</form>
+
+
+  </div>
+</main>
+{% include "footer.html" %}
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

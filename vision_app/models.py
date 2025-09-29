@@ -71,32 +71,35 @@ class UserManage(models.Manager):
 
 
 class designManage(models.Manager):
-    def validatordes(self, postData,filesData):
+    def validatordes(self, postData, filesData):
         errors = {}
-
-        if postData.get('title'):
-            if len(postData['title']) < 2:
+        title = postData.get('title', '').strip()
+        if title:
+            if len(title) < 3:
                 errors['len_title'] = 'Title should be longer than 2 letters'
         else:
             errors['null_title'] = 'You have to enter a title'
 
-        if 'image' not in filesData or not filesData['image']:
+        image = filesData.get('image')
+        if not image:
             errors['image'] = "You must upload an image"
         else:
             valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
-            file_name = filesData['image'].name.lower()
+            file_name = image.name.lower()
             if not any(file_name.endswith(ext) for ext in valid_extensions):
                 errors['image'] = "Image must be a valid format (jpg, png, gif, webp)"
-
+            if image.size > 5 * 1024 * 1024:
+                errors['image_size'] = "Image size must be under 5MB"
         if not postData.get('category'):
             errors['category'] = "You must select a category"
 
         return errors
 
 
+
 class Users(models.Model):
     username= models.CharField(max_length=45)
-    profilepic= models.URLField(max_length=225, null=True, blank=True)
+    profilepic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
     email = models.EmailField(max_length=225, unique=True)
     password = models.CharField(max_length=45) 
     created_at = models.DateTimeField(auto_now_add=True)

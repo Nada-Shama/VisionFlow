@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.pp{
+     color: rgba(255, 255, 255, 0.7);
+    }
+footer {
+   
+    flex: 1; 
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-size: 14px;
+}
+
+.footer-title {
+     padding-top:20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.social-icons a {
+    color: var(--light-color);
+    margin-right: 10px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+    </style>
+</head>
+<body>
+    <footer class="footer mt-auto py-4">
+  <div class="container">
+    <div class="row">
+
+      <!-- About Section -->
+      <div class="col-md-4">
+        <h5 class="footer-title">VisionFlow</h5>
+        <p class="footer-text pp" style='color: rgba(255, 255, 255, 0.7);'>
+          VisionFlow is a creative platform where designers showcase graphic design, interior design, and digital artwork. Upload, share, and inspire!
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4">
+        <h5 class="footer-title">Quick Links</h5>
+        <ul class="footer-links list-unstyled">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'profile' request.session.user_id %}">Profile</a></li>
+          <li><a href="{% url 'index' %}#categories">Categories</a></li>
+          <li><a href="{% url 'add_design' request.session.user_id %}">Add Design</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="col-md-4">
+        <h5 class="footer-title">Contact Us</h5>
+        <p class='pp' style='color: rgba(255, 255, 255, 0.7);'>Email: support@visionflow.com</p>
+        <p class='pp' style='color: rgba(255, 255, 255, 0.7);'>Phone: +20 123 456 789</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="text-center footer-bottom">
+      &copy; 2025 VisionFlow. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+    
+</body>
+</html>

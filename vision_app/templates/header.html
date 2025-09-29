@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+      --primary-color: #00657eff;   /* teal/navy */
+      --secondary-color: #d3e3e5ff; /* soft aqua */
+      --light-color: #EEEEEE;       /* cream/light */
+      --accent-color: #9a8796ff;    /* pink */
+  }
+
+  body {
+    background-colosr: var(--light-color);
+    color: var(--primary-color);
+    
+  }
+
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+
+  /* Navbar in pink */
+.navbar {
+    background-color: var(--accent-color) !important;
+    font-size: 18px;
+    
+}
+
+header{
+    margin-bottom:20px;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--light-color) !important;
+    
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+     transform: perspective(500px) rotateY(20deg);
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px; /* space between links */
+}
+
+.navbar .form-control {
+    width: 200px;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+ 
+}
+
+
+.logout-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    margin-right:20px;
+}
+
+.logout-btn:hover {
+    background-color: #004f55; /* darker shade of primary */
+    color: var(--light-color) !important;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid d-flex align-items-center">
+      
+      <!-- Logo -->
+      <a class="navbar-brand me-4"  href="{% url 'index' %}">
+        <img id='logo' src="{% static 'img/logo1.png' %}" style="height:50px; width:auto;" alt="">
+      </a>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 d-flex align-items-center">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'profile' request.session.user_id %}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#categories">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'add_design' request.session.user_id %}">Add Design</a>
+</li>
+        </ul>
+      </div>
+
+      <!-- Search -->
+
+      <a class="btn logout-btn" href="{% url 'logout' %}">Logout</a>
+    </div>
+  </nav>
+</header>
+
+
+</script>
+
+</body>
+</html>

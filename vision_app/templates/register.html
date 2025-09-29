@@ -8,52 +8,68 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    body { background-color: #9db9bbff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    :root {
+      --primary-color: #00657eff;   /* teal/navy */
+      --secondary-color: #d3e3e5ff; /* soft aqua */
+      --light-color: #EEEEEE;       /* cream/light */
+      --accent-color: #9a8796ff;    /* pink */
+    }
+
+    body { 
+      background-color: var(--secondary-color); 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+
     .auth-box {
-      background-color: #EEEEEE;
+      background-color: var(--light-color);
       border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      padding: 34px;
+      box-shadow: 0 8px 24px rgba(10, 75, 108, 0.43), inset 0 0 15px rgba(0,0,0,0.08);
+      padding: 15px 30px;
       width: 100%;
       max-width: 420px;
     }
-    .text-paynes-gray { color: #3C656E !important; }
-    .btn-paynes-gray { background-color: #3C656E; color: #fff; border: none; }
-    .btn-paynes-gray:hover { background-color: #2f4e55; }
-    .muted-note { color: #5a6b6f; font-size: 0.95rem; }
-    a.link-accent { color: #3C656E; text-decoration: none; font-weight: 600; }
+
+    .text-primary-custom { color: var(--primary-color) !important; }
+    .btn-primary-custom { background-color: var(--primary-color); color: #fff; border: none; }
+    .btn-primary-custom:hover {      background-color: var(--accent-color);
+      color:var(--light-color);}
+
+    .muted-note { color: #555; font-size: 0.95rem; }
+    a.link-accent { color: var(--accent-color); text-decoration: none; font-weight: 600; }
     a.link-accent:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="auth-box">
-    <h2 class="text-center mb-3 text-paynes-gray">Create an account</h2>
-
+    <h2 class="text-center mb-3 text-primary-custom">Create an account</h2>
 
     <form method="POST" action="{% url 'register' %}">
       {% csrf_token %}
 
       <div class="mb-3">
-        <label for="username" class="form-label text-paynes-gray">Full name</label>
+        <label for="username" class="form-label text-primary-custom">Full name</label>
         <input id="username" name="username" type="text" class="form-control" required>
       </div>
 
       <div class="mb-3">
-        <label for="email" class="form-label text-paynes-gray">Email</label>
+        <label for="email" class="form-label text-primary-custom">Email</label>
         <input id="email" name="email" type="text" class="form-control" required>
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label text-paynes-gray">Password</label>
+        <label for="password" class="form-label text-primary-custom">Password</label>
         <input id="password" name="password" type="password" class="form-control" required>
       </div>
 
       <div class="mb-3">
-        <label for="c_password" class="form-label text-paynes-gray">Password</label>
+        <label for="c_password" class="form-label text-primary-custom">Confirm Password</label>
         <input id="c_password" name="c_password" type="password" class="form-control" required>
       </div>
 
-      <button class="btn btn-paynes-gray w-100 mb-3" type="submit">Register</button>
+      <button class="btn btn-primary-custom w-100 mb-3" type="submit">Register</button>
     </form>
 
     <p class="text-center muted-note mb-1">
@@ -61,14 +77,13 @@
     </p>
     <p class="text-center muted-note">If you don't have an account yet, please sign up to join the community.</p>
   
-  <div>
-{% if messages %}
-  {% for message in messages %}
-    <p style="color:red;">{{ message }}</p>
-  {% endfor %}
-{% endif %}
+    <div>
+      {% if messages %}
+        {% for message in messages %}
+          <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
-</div>
-
 </body>
 </html>

@@ -11,41 +11,36 @@
 
   <title>Main Page</title>
 <style>
-  :root {
-    --primary-color: #00657eff;   /* teal/navy */
-    --secondary-color: #c5dcdeff; /* soft aqua */
-    --light-color: #EEEEEE;     /* light gray */
-    --accent-color: #897886ff;    /* pink */
+
+          :root {
+      --primary-color: #00657eff;   /* teal/navy */
+      --secondary-color: #d3e3e5ff; /* soft aqua */
+      --light-color: #EEEEEE;       /* cream/light */
+      --accent-color: #9a8796ff;    /* pink */
   }
 
   body {
-    background-color: var(--light-color);
+    background-colosr: var(--light-color);
     color: var(--primary-color);
+    
   }
 
   h1, h2, h3 {
     color: var(--primary-color);
   }
-
-  /* Navbar in pink */
-  .navbar {
-    background-color: var(--accent-color) !important;
-  }
-  .navbar-brand, .nav-link {
-    color: var(--light-color) !important;
-  }
-  .nav-link:hover {
-    color: var(--secondary-color) !important;
-  }
-
+  
   /* Welcome section in teal */
   .welcome-section {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: var(--light-color);
     text-align: center;
     padding: 3rem 1rem;
     border-radius: 8px;
   }
+
+    .welcome-section p{
+      color:var(--primary-color);
+    }
 
   /* Alternating section background */
   .featurette:nth-of-type(even) {
@@ -70,17 +65,7 @@
   }
 
   /* Cards get subtle teal border */
-  .card {
-    border: 2px solid var(--secondary-color);
-  }
-  .card-title {
-    color: var(--primary-color);
-  }
-  .card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-3px);
-    transition: 0.3s ease;
-  }
+ 
   .category-card {
   position: relative;
   overflow: hidden;
@@ -90,7 +75,7 @@
 
 .category-card img {
   width: 100%;
-  height: 250px;
+  height: auto;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -108,39 +93,52 @@
   font-weight: bold;
 }
 
+  .card-cover {
+    height: 450px; /* adjust this value for taller/shorter cards */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .card-cover:hover {
+    transform: scale(1.08) translateY(-10px);
+    box-shadow: 0 15px 35px rgba(12, 98, 122, 0.5);
+  }
+
+  .card-cover h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,1);
+  }
+
+
+.featurette-heading{
+  margin-bottom:50px;
+}
+
+.rounded-circle{
+  
+outline: 10px solid var(--accent-color);
+margin-bottom:20px;
+}
+.prof{
+        background-color: var(--accent-color);
+      color: white;
+}
+
+.prof:hover{background-color: #685768ff; color: white;}
 </style>
 
 
 </head>
 <body>
     
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Carousel</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
+{% include "header.html" %}
 
 <main>
 
@@ -153,8 +151,9 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
+<img style=' width: 100%;
+  height: auto;   /* Keeps aspect ratio */
+  object-fit: cover; ' src="https://i.pinimg.com/1200x/7b/87/9c/7b879c64a7a69a026c1e5a2eb0d1d79f.jpg" class="d-block w-100" alt="Slide 2" style="object-fit: cover; ">
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Example headline.</h1>
@@ -164,8 +163,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
+<img src="https://i.pinimg.com/736x/21/d7/29/21d729da767dcf08382a81c477aa373f.jpg" class="d-block w-100" alt="Slide 2" style="object-fit: cover;">
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
@@ -175,7 +173,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+       <img src="{% static 'img/cover.jpg' %}" class="d-block w-100" alt="Slide 2" style="object-fit: cover;">
 
         <div class="container">
           <div class="carousel-caption text-end">
@@ -198,117 +196,141 @@
 
   <!-- Welcome Section -->
   <div class="container welcome-section my-5">
-    <h2>Welcome to VisionFlow</h2>
-    <p>
-      This is a short welcoming paragraph. You can introduce the platform here
-      and encourage users to explore the categories below.
-    </p>
+    <h2 style="text-align:center; margin-bottom:50px;">Welcome to VisionFlow</h2>
+  <p>
+    Discover a space where creativity meets collaboration. VisionFlow is your platform to showcase unique designs, explore inspiring categories, and connect with a community that values innovation. Start browsing, share your work, and find new ideas to fuel your journey.
+  </p>
   </div>
 
   <hr class="featurette-divider">
 
-  <!-- Marketing messaging and featurettes -->
   <div class="container marketing">
 
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+<div class="row text-center">
+  <div class="col-lg-4">
+    <img src="{% static 'img/prof3.jpg' %}" class="rounded-circle" width="140" height="140" alt="Omer Khalid">
+    <h2>Omer Khalid</h2>
+    <p>Frontend Developer</p>
+    <p>Specializes in creating stunning UI and smooth user experiences.</p>
+    <p><a class="btn prof" href="#">View Profile &raquo;</a></p>
+  </div>
 
-        <h2>Heading</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+  <div class="col-lg-4">
+    <img src="{% static 'img/prof2.jpg' %}" class="rounded-circle" width="140" height="140" alt="Nada El-Sayed">
+    <h2>Lana El-Sayed</h2>
+    <p>Backend Developer</p>
+    <p>Ensures robust and efficient systems behind the scenes.</p>
+    <p><a class="btn prof" href="#">View Profile &raquo;</a></p>
+  </div>
 
-        <h2>Heading</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+  <div class="col-lg-4">
+    <img src="{% static 'img/prof1.jpg' %}" class="rounded-circle" width="140" height="140" alt="Lana Mahmoud">
+    <h2>Ali Mahmoud</h2>
+    <p>UI/UX Designer</p>
+    <p>Designs visually appealing and intuitive layouts for optimal interaction.</p>
+    <p><a class="btn prof" href="#">View Profile &raquo;</a></p>
+  </div>
+</div>
 
-        <h2>Heading</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
 
     <hr class="featurette-divider">
 
     <!-- Cards Section -->
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
-          </div>
+
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5" id="categories">
+
+  <div class="col" >
+    <a href="{% url 'category' 1 %}" class="text-decoration-none">
+      <div class="card card-cover overflow-hidden text-white  shadow-lg" 
+           style="background-image: url('{% static "img/graphic.jpg" %}');">
+        <div class="d-flex flex-column h-100 justify-content-center align-items-center p-5">
+          <h2>Graphic Design</h2>
         </div>
       </div>
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
-          </div>
+    </a>
+  </div>
+
+  <div class="col">
+    <a href="{% url 'category' 2 %}" class="text-decoration-none">
+      <div class="card card-cover overflow-hidden text-white  shadow-lg" 
+           style="background-image: url('{% static "img/interior1.jpg" %}');">
+        <div class="d-flex flex-column h-100 justify-content-center align-items-center p-5">
+          <h2>Interior Design</h2>
         </div>
       </div>
-      <div class="col">
-        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
-          </div>
+    </a>
+  </div>
+
+  <div class="col">
+    <a href="{% url 'category' 3 %}" class="text-decoration-none">
+      <div class="card card-cover overflow-hidden text-white  shadow-lg" 
+           style="background-image: url('{% static "img/digital1.jpg" %}');">
+        <div class="d-flex flex-column h-100 justify-content-center align-items-center p-5">
+          <h2>Digital Drawing</h2>
         </div>
       </div>
-    </div>
+    </a>
+  </div>
+
+</div>
+
 
     <hr class="featurette-divider">
 
     <!-- Featurettes -->
     <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Graphic Design <span class="text-muted">Creativity in every detail.</span></h2>
+    <p class="lead">Where creativity meets communication. Graphic design transforms ideas into striking visuals—logos, posters, and branding that speak louder than words.</p>
+  </div>
+  <div class="col-md-5">
 
-    <hr class="featurette-divider">
+  <img src="{% static 'img/graphic1.jpg' %}" 
+       class="featurette-image img-fluid mx-auto" 
+       alt="VisionFlow" style='object-fit: cover; height:400px; width: 400px;'>
 
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
+  </div>
+</div>
 
-    <hr class="featurette-divider">
+<hr class="featurette-divider">
 
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading">Interior Design <span class="text-muted">Style meets function.</span></h2>
+    <p class="lead">Designing spaces that inspire. Interior design blends functionality and style to create environments that are both beautiful and practical.</p>
+  </div>
+  <div class="col-md-5 order-md-1">
 
-    <hr class="featurette-divider">
-  </div><!-- /.container -->
+  <img src="{% static 'img/interior3.jpg' %}" 
+       class="featurette-image img-fluid mx-auto" 
+       alt="VisionFlow" style='object-fit: cover; height:400px; width: 400px;'>
 
-  <!-- Footer -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Digital Drawing <span class="text-muted">Art for the digital age.</span></h2>
+    <p class="lead">Art reimagined for the digital age. From character sketches to stunning illustrations, digital drawing brings imagination to life on the screen.</p>
+  </div>
+  <div class="col-md-5">
+  <img src="{% static 'img/digital5.jpg' %}" 
+       class="featurette-image img-fluid mx-auto" 
+       alt="VisionFlow" style='object-fit: cover; height:400px; width: 400px;'>
+
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+
+
+
 </main>
-
+{% include "footer.html" %}
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
 </body>
 </html>

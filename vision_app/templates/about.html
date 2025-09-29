@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link href="{%  static 'css/features.css'%}" rel="stylesheet" >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+         :root {
+      --primary-color: #00657eff;   /* teal/navy */
+      --secondary-color: #d3e3e5ff; /* soft aqua */
+      --light-color: #EEEEEE;       /* cream/light */
+      --accent-color: #9a8796ff;    /* pink */
+            }
+
+            body {
+                margin-top:150px;
+                background-colosr: var(--accent-color);
+                color: var(--secondary-color);
+                
+            }
+    </style>
+</head>
+<body>
+
+{% include "header.html" %}
+
+    <main style='margin-top:80px;'>
+<div class="container">
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading" style='margin-bottom:50px'>
+        About VisionFlow. <span class="text-muted">Creativity Meets Connection.</span>
+      </h2>
+      <p class="lead">
+        VisionFlow is a platform where designers and creators can showcase their work, connect with others, 
+        and find inspiration. We believe in turning ideas into reality through collaboration and innovation.
+      </p>
+    </div>
+    <div class="col-md-5">
+
+  <img src="{% static 'img/vision.jpg' %}" 
+       class="featurette-image img-fluid mx-auto" 
+       alt="VisionFlow" 
+       width="500" height="500">
+</div>
+
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#eee"/>
+        <text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
+      </svg>
+    </div>
+  </div>
+
+
+
+
+  <hr class="featurette-divider">
+        <div class="container welcome-section my-5">
+            <h2 style="text-align:center; margin-bottom:50px;">Our Mission</h2>
+        <p style="text-align:center; max-width:700px; margin:0 auto; color:var(--primary-color);">
+        At VisionFlow, our mission is to empower creativity and innovation by providing a platform where designers and users can connect, share ideas, and inspire one another. We are dedicated to building an inclusive community that values originality, collaboration, and growth.
+        </p>
+  </div>
+
+
+  <hr class="featurette-divider">
+
+          <div class="container welcome-section my-5">
+            <h2 style="text-align:center; margin-bottom:50px;">Our Vision</h2>
+
+<p style="text-align:center; max-width:700px; margin:0 auto; color:var(--primary-color);">
+At VisionFlow, our mission is to empower creativity and innovation by providing a platform where designers and users can connect, share ideas, and inspire one another. We are dedicated to building an inclusive community that values originality, collaboration, and growth.
+</p>  </p>
+  </div>
+
+
+  <hr class="featurette-divider">
+
+    </main>
+{% include "footer.html" %}
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
