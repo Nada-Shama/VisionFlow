@@ -1,0 +1,1390 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "vision_app",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "vision_app",
+    "model": "users"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "vision_app",
+    "model": "desgin"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "vision_app",
+    "model": "comment"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nubwg3ygcvrepsf51hky9qaf4fu7py6i",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-rH-U9JzBWq9tHECOFCcV4u4QKQW0b2bei0Xc1ha3UZY4ZXZmmp1-t4T0KH0H-Y79NnOa-7pMie8KP-jg1zmX5-Vw_w4ajvatq0AUxiIIQz54F2QCAp-0Bk1FGbBWogmgpIcqPBQSOYNyJWH1Jjv2_gDEPDdE:1v3CnG:u3F_flzjSe5C4Sl-vP1_phK91jnJbp3lZ05qdasOm-o",
+    "expire_date": "2025-10-13T12:15:50.733Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 5,
+  "fields": {
+    "username": "Lana",
+    "profilepic": "profile_pics/fun-unique-cartoon-profile-picture-that-represents-your-style-personality_1_s9rbb08.jpg",
+    "email": "lana@a.com",
+    "password": "$2b$12$q0R4Q0pX0T1IM7i165m8l.Yui9BA6B8lgH.BbXyqYRGbpMYBG6XTu",
+    "created_at": "2025-09-25T21:20:38.672Z",
+    "updated_at": "2025-09-28T12:52:25.264Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 6,
+  "fields": {
+    "username": "Omer",
+    "profilepic": "",
+    "email": "omer@o.com",
+    "password": "$2b$12$abn6Wa1w/Em7rKRLP6FyxeqkEae.xA5OrnM5R.34iVckWaQx7iYC.",
+    "created_at": "2025-09-25T21:21:09.929Z",
+    "updated_at": "2025-09-25T21:21:09.929Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 7,
+  "fields": {
+    "username": "nada",
+    "profilepic": "",
+    "email": "nada@admin.com",
+    "password": "admin",
+    "created_at": "2025-09-28T20:50:59.095Z",
+    "updated_at": "2025-09-28T20:51:17.726Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 8,
+  "fields": {
+    "username": "Ali",
+    "profilepic": "profile_pics/smiling-young-man-illustration_1308-174669.jpg",
+    "email": "ali@a.com",
+    "password": "$2b$12$E4SdGUI6stS.fnMiPkmyVOM6Wzr2AvWw1C81Bq4CehIKMyoZHnEfa",
+    "created_at": "2025-09-29T00:21:31.835Z",
+    "updated_at": "2025-09-29T00:43:50.164Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 9,
+  "fields": {
+    "username": "Ola",
+    "profilepic": "profile_pics/77c4694e2f1fb111268dd5975f09689e.jpg",
+    "email": "ola@o.com",
+    "password": "$2b$12$UDzbnmhy.v.N2/MSQMoVJOmmq2DHa2kDD3gDGgoliJIWwCOMH1upW",
+    "created_at": "2025-09-29T00:45:02.168Z",
+    "updated_at": "2025-09-29T01:28:25.018Z"
+  }
+},
+{
+  "model": "vision_app.users",
+  "pk": 10,
+  "fields": {
+    "username": "qwer",
+    "profilepic": "",
+    "email": "q@q.q",
+    "password": "$2b$12$LzqLaXlCgvlzb7feCCaylu.EjcaIHmVN1Qz2G8vtOMqH5v5KNDc1O",
+    "created_at": "2025-09-29T01:27:05.697Z",
+    "updated_at": "2025-09-29T01:27:05.697Z"
+  }
+},
+{
+  "model": "vision_app.category",
+  "pk": 1,
+  "fields": {
+    "name": "Graphic Design",
+    "description": "Graphic design focuses on combining typography, images, and visual elements to create impactful content for communication. It includes branding, posters, advertisements, web layouts, and digital media. The goal is to deliver a clear message and make content visually appealing while maintaining creativity and balance.",
+    "created_at": "2025-09-25T20:50:37.471Z",
+    "updated_at": "2025-09-27T16:03:08.364Z"
+  }
+},
+{
+  "model": "vision_app.category",
+  "pk": 2,
+  "fields": {
+    "name": "Interior Design",
+    "description": "Interior design is the art and science of enhancing interior spaces to make them functional, comfortable, and aesthetically pleasing. It involves space planning, color theory, furniture selection, lighting, and materials. Great interior design blends creativity with practicality to create environments where people feel inspired and at ease.",
+    "created_at": "2025-09-25T20:50:45.093Z",
+    "updated_at": "2025-09-27T16:03:25.314Z"
+  }
+},
+{
+  "model": "vision_app.category",
+  "pk": 3,
+  "fields": {
+    "name": "Digital Drawing",
+    "description": "Digital drawing uses modern tools such as tablets and specialized software to create expressive artwork. It allows for limitless creativity, from simple sketches to complex illustrations, concept art, and animations. Digital artists benefit from layers, brushes, and effects that traditional media cannot offer, while still reflecting personal style.",
+    "created_at": "2025-09-25T20:50:50.268Z",
+    "updated_at": "2025-09-27T16:03:40.674Z"
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 3,
+  "fields": {
+    "title": "Furniture design",
+    "image": "designs/fur6.png",
+    "user_uploaded": 5,
+    "category": 1,
+    "created_at": "2025-09-27T23:47:51.323Z",
+    "updated_at": "2025-09-27T23:47:51.323Z",
+    "who_liked_it": [
+      5,
+      6,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 6,
+  "fields": {
+    "title": "Living room",
+    "image": "designs/interior.jpg",
+    "user_uploaded": 6,
+    "category": 2,
+    "created_at": "2025-09-28T20:58:58.373Z",
+    "updated_at": "2025-09-28T20:58:58.373Z",
+    "who_liked_it": [
+      5,
+      6,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 7,
+  "fields": {
+    "title": "Digital Art in the beach",
+    "image": "designs/digital.jpg",
+    "user_uploaded": 6,
+    "category": 3,
+    "created_at": "2025-09-28T21:09:38.870Z",
+    "updated_at": "2025-09-28T21:09:38.870Z",
+    "who_liked_it": [
+      5,
+      6,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 8,
+  "fields": {
+    "title": "Salad design",
+    "image": "designs/food2.png",
+    "user_uploaded": 6,
+    "category": 1,
+    "created_at": "2025-09-28T21:11:28.924Z",
+    "updated_at": "2025-09-28T21:11:28.924Z",
+    "who_liked_it": [
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 9,
+  "fields": {
+    "title": "Social media coffee design",
+    "image": "designs/coffee-3.png",
+    "user_uploaded": 8,
+    "category": 1,
+    "created_at": "2025-09-29T00:32:21.238Z",
+    "updated_at": "2025-09-29T00:32:21.238Z",
+    "who_liked_it": [
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 10,
+  "fields": {
+    "title": "Desk digital drawing",
+    "image": "designs/digital4.jpg",
+    "user_uploaded": 8,
+    "category": 3,
+    "created_at": "2025-09-29T00:33:17.739Z",
+    "updated_at": "2025-09-29T00:33:17.739Z",
+    "who_liked_it": [
+      5,
+      8
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 11,
+  "fields": {
+    "title": "Purple living room",
+    "image": "designs/interior4.jpg",
+    "user_uploaded": 8,
+    "category": 2,
+    "created_at": "2025-09-29T00:34:05.246Z",
+    "updated_at": "2025-09-29T00:34:05.246Z",
+    "who_liked_it": [
+      5,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 12,
+  "fields": {
+    "title": "Beautifull living room",
+    "image": "designs/interior3.jpg",
+    "user_uploaded": 9,
+    "category": 2,
+    "created_at": "2025-09-29T00:45:46.678Z",
+    "updated_at": "2025-09-29T00:45:46.678Z",
+    "who_liked_it": []
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 13,
+  "fields": {
+    "title": "Cat on the window",
+    "image": "designs/digital5.jpg",
+    "user_uploaded": 9,
+    "category": 3,
+    "created_at": "2025-09-29T01:06:59.105Z",
+    "updated_at": "2025-09-29T01:06:59.105Z",
+    "who_liked_it": [
+      5,
+      6,
+      9
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 14,
+  "fields": {
+    "title": "Pumkins drawing",
+    "image": "designs/digital3.jpg",
+    "user_uploaded": 9,
+    "category": 3,
+    "created_at": "2025-09-29T01:07:21.741Z",
+    "updated_at": "2025-09-29T01:07:21.742Z",
+    "who_liked_it": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 15,
+  "fields": {
+    "title": "Mountine drawing",
+    "image": "designs/digital6.jpg",
+    "user_uploaded": 5,
+    "category": 3,
+    "created_at": "2025-09-29T03:19:00.560Z",
+    "updated_at": "2025-09-29T03:19:00.560Z",
+    "who_liked_it": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 16,
+  "fields": {
+    "title": "Light blue kitchen interior",
+    "image": "designs/interior5.jpg",
+    "user_uploaded": 5,
+    "category": 2,
+    "created_at": "2025-09-29T03:19:47.724Z",
+    "updated_at": "2025-09-29T03:19:47.724Z",
+    "who_liked_it": []
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 17,
+  "fields": {
+    "title": "Pink coutch",
+    "image": "designs/interior6.jpg",
+    "user_uploaded": 5,
+    "category": 2,
+    "created_at": "2025-09-29T03:20:07.873Z",
+    "updated_at": "2025-09-29T03:20:07.873Z",
+    "who_liked_it": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "vision_app.desgin",
+  "pk": 18,
+  "fields": {
+    "title": "Clothing store ad",
+    "image": "designs/111.jpg",
+    "user_uploaded": 5,
+    "category": 1,
+    "created_at": "2025-09-29T03:26:32.913Z",
+    "updated_at": "2025-09-29T03:26:32.913Z",
+    "who_liked_it": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 1,
+  "fields": {
+    "text": "Nice",
+    "user": 5,
+    "design": 3,
+    "created_at": "2025-09-28T00:25:23.205Z",
+    "updated_at": "2025-09-28T00:25:23.205Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 2,
+  "fields": {
+    "text": "Love it",
+    "user": 6,
+    "design": 3,
+    "created_at": "2025-09-28T21:09:03.973Z",
+    "updated_at": "2025-09-28T21:09:03.973Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 6,
+  "fields": {
+    "text": "Nice colors",
+    "user": 6,
+    "design": 11,
+    "created_at": "2025-09-29T01:11:24.231Z",
+    "updated_at": "2025-09-29T01:11:24.231Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 7,
+  "fields": {
+    "text": "I really like it",
+    "user": 6,
+    "design": 11,
+    "created_at": "2025-09-29T01:15:34.068Z",
+    "updated_at": "2025-09-29T01:15:34.068Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 8,
+  "fields": {
+    "text": "Nice one",
+    "user": 6,
+    "design": 13,
+    "created_at": "2025-09-29T01:15:46.916Z",
+    "updated_at": "2025-09-29T01:15:46.916Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 9,
+  "fields": {
+    "text": "Very Good",
+    "user": 9,
+    "design": 3,
+    "created_at": "2025-09-29T01:20:46.059Z",
+    "updated_at": "2025-09-29T01:20:46.059Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 10,
+  "fields": {
+    "text": "I like this one\r\n",
+    "user": 9,
+    "design": 9,
+    "created_at": "2025-09-29T01:21:22.132Z",
+    "updated_at": "2025-09-29T01:21:22.132Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 11,
+  "fields": {
+    "text": "Beautiful",
+    "user": 9,
+    "design": 6,
+    "created_at": "2025-09-29T01:21:54.041Z",
+    "updated_at": "2025-09-29T01:21:54.041Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 12,
+  "fields": {
+    "text": "Looks delicious",
+    "user": 9,
+    "design": 8,
+    "created_at": "2025-09-29T01:22:43.775Z",
+    "updated_at": "2025-09-29T01:22:43.775Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 13,
+  "fields": {
+    "text": "so pretty",
+    "user": 5,
+    "design": 13,
+    "created_at": "2025-09-29T01:23:35.884Z",
+    "updated_at": "2025-09-29T01:23:35.884Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 14,
+  "fields": {
+    "text": "Wow !",
+    "user": 8,
+    "design": 7,
+    "created_at": "2025-09-29T01:24:59.243Z",
+    "updated_at": "2025-09-29T01:24:59.243Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 15,
+  "fields": {
+    "text": "I like it",
+    "user": 8,
+    "design": 10,
+    "created_at": "2025-09-29T01:25:41.300Z",
+    "updated_at": "2025-09-29T01:25:41.300Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 16,
+  "fields": {
+    "text": "It is really nice",
+    "user": 6,
+    "design": 17,
+    "created_at": "2025-09-29T03:27:52.903Z",
+    "updated_at": "2025-09-29T03:27:52.903Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 17,
+  "fields": {
+    "text": "Like",
+    "user": 6,
+    "design": 17,
+    "created_at": "2025-09-29T03:28:42.160Z",
+    "updated_at": "2025-09-29T03:28:42.160Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 18,
+  "fields": {
+    "text": "Love the color",
+    "user": 6,
+    "design": 16,
+    "created_at": "2025-09-29T03:30:24.704Z",
+    "updated_at": "2025-09-29T03:30:24.704Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 26,
+  "fields": {
+    "text": "Wow",
+    "user": 6,
+    "design": 16,
+    "created_at": "2025-09-29T03:35:03.235Z",
+    "updated_at": "2025-09-29T03:35:03.235Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 28,
+  "fields": {
+    "text": "Nice",
+    "user": 6,
+    "design": 15,
+    "created_at": "2025-09-29T03:38:59.257Z",
+    "updated_at": "2025-09-29T03:38:59.257Z"
+  }
+},
+{
+  "model": "vision_app.comment",
+  "pk": 30,
+  "fields": {
+    "text": "I love it",
+    "user": 5,
+    "design": 15,
+    "created_at": "2025-09-29T12:12:53.638Z",
+    "updated_at": "2025-09-29T12:12:53.638Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add category",
+    "content_type": [
+      "vision_app",
+      "category"
+    ],
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change category",
+    "content_type": [
+      "vision_app",
+      "category"
+    ],
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete category",
+    "content_type": [
+      "vision_app",
+      "category"
+    ],
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view category",
+    "content_type": [
+      "vision_app",
+      "category"
+    ],
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add desgin",
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "codename": "add_desgin"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change desgin",
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "codename": "change_desgin"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete desgin",
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "codename": "delete_desgin"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view desgin",
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "codename": "view_desgin"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add comment",
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "codename": "add_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change comment",
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "codename": "change_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete comment",
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "codename": "delete_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view comment",
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "codename": "view_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add users",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "add_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change users",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "change_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete users",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "delete_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view users",
+    "content_type": [
+      "vision_app",
+      "users"
+    ],
+    "codename": "view_users"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$3Yak3N6YQXh86BDcWNl9o0$7R5BUtgIXVBxopotr6jWbiSVLDFlM83+IdgabiXlOvY=",
+    "last_login": "2025-09-23T12:33:18.462Z",
+    "is_superuser": false,
+    "username": "q",
+    "first_name": "t",
+    "last_name": "",
+    "email": "q@q.q",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-23T12:33:18.063Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$B3MJZgPtIeDalZ3nWOnuNG$jZHP7AxUxqovE2OalvkaPqDWMKJRDY5Bp5+6aEJ+yew=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "nn@nn.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-24T12:02:43.781Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$y93qcuKcvdgJfyatbzX5VI$3SohuucKOlszYmw+eaTBMjnaVustaAbBQ4b/OL3ntOk=",
+    "last_login": "2025-09-29T12:15:50.724Z",
+    "is_superuser": true,
+    "username": "nada",
+    "first_name": "",
+    "last_name": "",
+    "email": "nada@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-28T20:40:23.418Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$FbaMdH0Mdht4xbyNjB043V$F7JpfojiJnnfzlZMB4vG1UfZ3Seacnyap6mBJ9cLHJo=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "nada-",
+    "first_name": "",
+    "last_name": "",
+    "email": "nada@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-28T20:46:30.833Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-09-28T20:57:16.804Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "object_id": "2",
+    "object_repr": "Test Design",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-09-29T01:11:06.715Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "5",
+    "object_repr": "Comment by It is really good",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-09-29T03:23:02.082Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "object_id": "5",
+    "object_repr": "Sofa Design ",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-09-29T03:23:02.082Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "desgin"
+    ],
+    "object_id": "4",
+    "object_repr": "Coffee design",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-09-29T03:33:57.987Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "25",
+    "object_repr": "Comment by s",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-09-29T03:33:57.987Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "24",
+    "object_repr": "Comment by s",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-09-29T03:33:57.987Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "23",
+    "object_repr": "Comment by s",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-09-29T03:33:57.987Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "22",
+    "object_repr": "Comment by ww",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-09-29T03:33:57.987Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "21",
+    "object_repr": "Comment by dd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-09-29T03:34:08.208Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "20",
+    "object_repr": "Comment by dd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-09-29T03:34:19.825Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "19",
+    "object_repr": "Comment by Love the color",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-09-29T03:38:43.572Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "27",
+    "object_repr": "Comment by Nice",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-09-29T03:40:30.101Z",
+    "user": [
+      "nada"
+    ],
+    "content_type": [
+      "vision_app",
+      "comment"
+    ],
+    "object_id": "29",
+    "object_repr": "Comment by d",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]
